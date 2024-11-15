@@ -15,10 +15,10 @@ class OpenAIHelper:
         return OpenAIHelper.openai_helper
 
     def __init__(self, openai_configs):
-        with open('utils/model_instruction.md') as f:
+        with open('frontend/utils/model_instruction.md') as f:
             self.instruction = f.read()
 
-        with open('utils/search_function.json') as f:
+        with open('frontend/utils/search_function.json') as f:
             self.function_spec = json.load(f)
 
         openai_configs = {k: v for k, v in openai_configs.items() if v is not None}

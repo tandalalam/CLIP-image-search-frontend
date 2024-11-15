@@ -58,5 +58,5 @@ def index() -> rx.Component:
 
 
 app = rx.App()
-app.add_page(index)
-app.add_page(chat_index, route='/chat')
+app.add_page(index, title='CLIP search')
+app.add_page(chat_index, route='/chat', title='Chat')
