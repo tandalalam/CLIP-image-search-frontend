@@ -40,7 +40,7 @@ class ConfigManager:
             ConfigManager.config_manager = ConfigManager()
         return ConfigManager.config_manager
 
-    def __init__(self, configuration_path='utils/configs/configuration.yaml'):
+    def __init__(self, configuration_path='frontend/utils/configs/configuration.yaml'):
         load_dotenv('.env')
 
         yaml.add_implicit_resolver('!path', path_matcher)
