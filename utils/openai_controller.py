@@ -30,8 +30,6 @@ class OpenAIHelper:
 
     def generate_response(self, conversation: list[dict]):
 
-        print(conversation)
-
         data = {
             "model": 'gpt-4o',
             "messages": [
@@ -49,8 +47,6 @@ class OpenAIHelper:
         resp = self.openai_client.chat.completions.create(
             **data
         ).choices[0].message
-
-        print(resp)
 
         if dict(resp).get('function_call'):
             function_args = json.loads(resp.function_call.arguments)
