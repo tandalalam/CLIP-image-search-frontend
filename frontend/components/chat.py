@@ -70,10 +70,10 @@ def action_bar() -> rx.Component:
         rx.box(
             rx.el.input(
                 placeholder="Ask anything",
-                on_blur=ChatState.set_question,
+                on_change=ChatState.set_question,
                 id="input1",
                 class_name="box-border bg-slate-3 px-4 py-2 pr-14 rounded-full w-full outline-none focus:outline-accent-10 h-[48px] text-slate-12 placeholder:text-slate-9",
-                on_key_down=ChatState.handle_key_down,
+                on_key_up=ChatState.handle_key_down
             ),
             rx.el.button(
                 rx.cond(

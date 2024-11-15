@@ -39,8 +39,9 @@ reflex build
 - **/states**: The state variables of the webpage.
 
 ## Screenshots
-![img.png](img.png)[*(Add screenshots or mockups here to showcase the user interface)*
-](frontend)
+![img.png](mainpage.png)
+---
+![img.png](chatpage.png) 
 ---
 
 This file serves as a guide for setting up and running the project, as well as for providing an overview of its main features and structure. For more on Reflex and its capabilities, refer to [Reflex documentation](https://reflex.dev).

@@ -60,8 +60,7 @@ class ChatState(rx.State):
 
     async def handle_key_down(self, key: str):
         if key == "Enter":
-            async for t in self.answer():
-                yield t
+            return self.answer()
 
     def clear_chat(self):
         # Reset the chat history and processing state

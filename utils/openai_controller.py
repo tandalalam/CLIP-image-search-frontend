@@ -31,7 +31,7 @@ class OpenAIHelper:
     def generate_response(self, conversation: list[dict]):
 
         data = {
-            "model": 'gpt-4o',
+            "model": 'gpt-3.5-turbo',
             "messages": [
                 {
                     "role": "system",
