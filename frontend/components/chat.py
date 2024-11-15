@@ -1,7 +1,7 @@
 import reflex as rx
 from frontend.components.product_cards import product_grid_for_in_chat_response
-from states.chat_state import ChatState
-from states.models.messages import Message, Role, FinishReason
+from frontend.states.chat_state import ChatState
+from frontend.states.models.messages import Message, Role, FinishReason
 
 
 def message_box(message: Message) -> rx.Component:

@@ -1,7 +1,7 @@
 import reflex as rx
 
 from frontend.chat_page import chat_index
-from states.query_state import QueryState
+from frontend.states.query_state import QueryState
 from frontend.components.filters import filter_menu
 from frontend.components.product_cards import product_grid
 

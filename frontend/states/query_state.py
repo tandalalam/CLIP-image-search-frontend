@@ -1,7 +1,7 @@
 import reflex as rx
-from states.filters_state import FilterState
-from utils.api_controller import APIController
-from states.models.product import Product
+from frontend.states.filters_state import FilterState
+from frontend.utils.api_controller import APIController
+from frontend.states.models.product import Product
 
 
 class QueryState(rx.State):

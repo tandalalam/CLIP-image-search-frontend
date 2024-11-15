@@ -1,7 +1,7 @@
 import json
 import httpx
 from openai import OpenAI
-from utils.configs.configs import ConfigManager
+from frontend.utils.configs.configs import ConfigManager
 
 
 class OpenAIHelper:

@@ -1,6 +1,6 @@
 import reflex as rx
 from frontend import style
-from states.chat_state import SettingsState
+from frontend.states.chat_state import SettingsState
 from frontend.components.chat import chat, action_bar
 
 

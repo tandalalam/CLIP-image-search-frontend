@@ -3,9 +3,7 @@ from frontend.style import create_colors_dict
 
 config = rx.Config(
     app_name="frontend",
-    api_url="http://localhost:9000",
-    backend_port=9000,
-    deployment_name="deployment",
+    api_url="http://0.0.0.0:8000",
     tailwind={
         "darkMode": "class",
         "theme": {

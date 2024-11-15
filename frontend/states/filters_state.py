@@ -1,9 +1,8 @@
 import reflex as rx
-from enum import Enum
 from typing import List
 
-from utils.api_controller import APIController
-from states.models.filter import Filter, FilterType
+from frontend.utils.api_controller import APIController
+from frontend.states.models.filter import Filter, FilterType
 
 
 class FilterState(rx.State):

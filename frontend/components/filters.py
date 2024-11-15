@@ -1,5 +1,5 @@
 import reflex as rx
-from states.filters_state import Filter, FilterType, FilterState
+from frontend.states.filters_state import Filter, FilterType, FilterState
 
 
 def get_filter(filter_obj: Filter):

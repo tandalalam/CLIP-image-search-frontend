@@ -1,4 +1,4 @@
-from states.query_state import QueryState, Product
+from frontend.states.query_state import QueryState, Product
 import reflex as rx
 
 

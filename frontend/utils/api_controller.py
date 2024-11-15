@@ -1,6 +1,6 @@
 from typing import Dict
 from requests import request
-from utils.configs.configs import ConfigManager
+from frontend.utils.configs.configs import ConfigManager
 
 
 class APIController:
