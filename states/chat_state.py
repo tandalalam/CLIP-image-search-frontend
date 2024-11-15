@@ -13,7 +13,7 @@ class SettingsState(rx.State):
     font_family: str = "Poppins"
 
 
-class State(rx.State):
+class ChatState(rx.State):
     question: str
     processing: bool = False
 
@@ -42,10 +42,10 @@ class State(rx.State):
         response, args, function_call_content = openai_helper.generate_response(chat_history_dicts)
 
         if function_call_content is not None:
-            query_state: State = await self.get_state(QueryState)
+            query_state: rx.State = await self.get_state(QueryState)
             query_state.set_text(response)
 
-            filter_state: State = await self.get_state(FilterState)
+            filter_state: rx.State = await self.get_state(FilterState)
             filter_state.set_form_data(args)
 
             self.chat_history.append(Message.assistant_message(content=function_call_content,

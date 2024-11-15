@@ -1,6 +1,6 @@
 import reflex as rx
 from frontend.components.product_cards import product_grid_for_in_chat_response
-from states.chat_state import State
+from states.chat_state import ChatState
 from states.models.messages import Message, Role, FinishReason
 
 
@@ -20,7 +20,7 @@ def message_box(message: Message) -> rx.Component:
         rx.box(
             rx.image(
                 src="/chatgpt.png",
-                class_name="h-6" + rx.cond(State.processing, " animate-pulse", ""),
+                class_name="h-6" + rx.cond(ChatState.processing, " animate-pulse", ""),
             ),
             rx.cond(
                 message.type == FinishReason.STOP_TOKEN,
@@ -55,7 +55,7 @@ def chat() -> rx.Component:
     return rx.scroll_area(
         rx.box(
             rx.foreach(
-                State.chat_history,
+                ChatState.chat_history,
                 message_box,
             ),
             class_name="flex flex-col gap-8 pb-10 group"
@@ -70,13 +70,14 @@ def action_bar() -> rx.Component:
         rx.box(
             rx.el.input(
                 placeholder="Ask anything",
-                on_blur=State.set_question,
+                on_blur=ChatState.set_question,
                 id="input1",
                 class_name="box-border bg-slate-3 px-4 py-2 pr-14 rounded-full w-full outline-none focus:outline-accent-10 h-[48px] text-slate-12 placeholder:text-slate-9",
+                on_key_down=ChatState.handle_key_down,
             ),
             rx.el.button(
                 rx.cond(
-                    State.processing,
+                    ChatState.processing,
                     rx.icon(
                         tag="loader-circle",
                         size=19,
@@ -85,10 +86,10 @@ def action_bar() -> rx.Component:
                     ),
                     rx.icon(tag="arrow-up", size=19, color="white"),
                 ),
-                on_click=[State.answer, rx.set_value("input1", "")],
+                on_click=[ChatState.answer, rx.set_value("input1", "")],
                 class_name="top-1/2 right-4 absolute bg-accent-9 hover:bg-accent-10 disabled:hover:bg-accent-9 opacity-65 disabled:opacity-50 p-1.5 rounded-full transition-colors -translate-y-1/2 cursor-pointer disabled:cursor-default",
                 disabled=rx.cond(
-                    State.processing | (State.question == ""), True, False
+                    ChatState.processing | (ChatState.question == ""), True, False
                 ),
             ),
             class_name="relative w-full",

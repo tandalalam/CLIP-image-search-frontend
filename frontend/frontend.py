@@ -12,7 +12,8 @@ def search_bar():
             rx.input.slot(
                 rx.hstack(
                     filter_menu(),
-                    rx.icon("search")
+                    rx.icon("search",
+                            on_click=QueryState.search('enter'))
                 )
             ),
             color_scheme="blue",
