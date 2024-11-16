@@ -18,19 +18,14 @@ pip install reflex
 ### Installation
 Clone this repository and navigate to the project folder.
 
-### Running the Project
-To start the Reflex development server, use:
+### Building the Project
+To build the Reflex development server, use:
 ```bash
-reflex run
+docker build -t reflex-app .
+docker run -p 8080:8080 reflex-app
 ```
 
 The application will be available locally. Reflex compiles Python to JavaScript, enabling interactive frontend components without additional JavaScript.
-
-### Building for Production
-To build a production version of the app, run:
-```bash
-reflex build
-```
 
 ## Project Structure
 - **/frontend**: Contains different pages for the app, including the search and AI-assist pages.

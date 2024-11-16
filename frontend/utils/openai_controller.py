@@ -31,7 +31,7 @@ class OpenAIHelper:
     def generate_response(self, conversation: list[dict]):
 
         data = {
-            "model": 'gpt-3.5-turbo',
+            "model": 'gpt-4o',
             "messages": [
                 {
                     "role": "system",
@@ -40,16 +40,16 @@ class OpenAIHelper:
                 *conversation
             ],
             "temperature": 0.5,
-            "functions": [self.function_spec],
-            "function_call": "auto"
+            "tools": [self.function_spec],
+            "tool_choice": "auto"
         }
 
         resp = self.openai_client.chat.completions.create(
             **data
         ).choices[0].message
 
-        if dict(resp).get('function_call'):
-            function_args = json.loads(resp.function_call.arguments)
+        if dict(resp).get('tool_calls'):
+            function_args = json.loads(resp.tool_calls[0].function.arguments)
             search_term = function_args.pop('text')
             return search_term, dict(**function_args), resp.content
         else:

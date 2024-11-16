@@ -25,17 +25,18 @@ class ChatState(rx.State):
         self.processing = True
         yield
 
-        self.chat_history.append(Message.user_message(content=self.question))
+        question = self.question
+        self.question = ''
+        yield
+
+        self.chat_history.append(Message.user_message(content=question))
 
         chat_history_dicts = []
         for message in self.chat_history:
-            chat_history_dicts.append(
-                {"role": message.role, "content": message.content}
-            )
-
-        self.question = ''
-
-        yield
+            if message.type != FinishReason.FUNCTION_CALL:
+                chat_history_dicts.append(
+                    {"role": message.role, "content": message.content}
+                )
 
         openai_helper = OpenAIHelper.get_openai_api_controller()
         response, args, function_call_content = openai_helper.generate_response(chat_history_dicts)

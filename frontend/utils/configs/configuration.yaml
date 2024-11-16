@@ -2,5 +2,6 @@ backend_configs:
   backend_url: https://clip-mori-entrance.darkube.app
 openai_configs:
   proxy: ${OPENAI_PROXY}
+  base_url: ${BASE_URL}
   api_key: ${API_KEY}
 
